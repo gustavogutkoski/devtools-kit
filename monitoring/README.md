@@ -2,7 +2,7 @@
 
 This directory contains the default configuration for monitoring PostgreSQL databases using Prometheus and Grafana, with metrics collection via `postgres-exporter`.
 
-## Serviços
+## Services
 
 - **Prometheus**: Collects and stores database metrics via `postgres-exporter`.
 - **Grafana**: Visualization of metrics and customizable dashboards.
@@ -34,6 +34,6 @@ This directory contains the default configuration for monitoring PostgreSQL data
 
 4. Import PostgreSQL + Prometheus dashboards into Grafana for advanced visualization.
 
-## Observações
+## Observations
 
 - This environment is intended for development and testing. For production, adjust sensitive variables and data persistence settings.
