@@ -1,0 +1,35 @@
+# Logs
+*.log
+
+# Docker
+**/data/
+**/volumes/
+**/tmp/
+**/.docker/
+
+# Prometheus
+prometheus/prometheus.tsdb/
+prometheus/data/
+
+# Grafana
+grafana/data/
+grafana/plugins/
+grafana/provisioning/dashboards/*.json
+
+# Env files
+.env
+.env.*
+
+# Backup or temp files
+*~
+*.bak
+*.swp
+*.tmp
+
+# OS-generated
+.DS_Store
+Thumbs.db
+
+# IDEs/editors
+.vscode/
+.idea/
