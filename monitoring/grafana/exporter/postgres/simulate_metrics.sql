@@ -6,21 +6,21 @@ CREATE TABLE test_metrics (
     data TEXT
 );
 
--- Inserção em massa (gera WAL, atividade de escrita e IO)
+-- Bulk inserts (generate WAL, write activity, and I/O)
 INSERT INTO test_metrics (data)
 SELECT md5(random()::text)
 FROM generate_series(1, 50000);
 
--- Atualizações em massa (gera dead tuples e WAL)
+-- Bulk updates (generate dead tuples and WAL)
 UPDATE test_metrics
 SET data = md5(random()::text)
 WHERE id % 10 = 0;
 
--- Deleções (mais dead tuples)
+-- Bulk deletes (more dead tuples)
 DELETE FROM test_metrics
 WHERE id % 15 = 0;
 
--- Simulação de lock (execute em dois terminais)
+-- Simulate lock (execute in two terminals)
 -- Terminal 1:
 -- BEGIN;
 -- UPDATE test_metrics SET data = 'lock' WHERE id = 1;
@@ -29,7 +29,7 @@ WHERE id % 15 = 0;
 -- BEGIN;
 -- UPDATE test_metrics SET data = 'locked' WHERE id = 1;
 
--- Loop de selects para gerar cache hits e uso de buffer
+-- Loop of selects to generate cache hits and buffer usage
 DO $$
 BEGIN
     FOR i IN 1..10000 LOOP
