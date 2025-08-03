@@ -34,6 +34,6 @@ This directory contains the default configuration for monitoring PostgreSQL data
 
 4. Import PostgreSQL + Prometheus dashboards into Grafana for advanced visualization.
 
-## Observations
+## Notes
 
 - This environment is intended for development and testing. For production, adjust sensitive variables and data persistence settings.
