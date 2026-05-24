@@ -3,6 +3,7 @@ services:
     image: prom/prometheus:v2.52.0
     container_name: prometheus
     volumes:
+        - prometheus-data:/prometheus
         - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
@@ -29,6 +30,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
+      - grafana-data:/var/lib/grafana
       - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
       - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards
     depends_on:
@@ -71,6 +73,8 @@ services:
 volumes:
   nexus-data:
   postgres-data:
+  grafana-data:
+  prometheus-data:
 
 networks:
   devtools:
